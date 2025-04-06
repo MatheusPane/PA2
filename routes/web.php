@@ -16,19 +16,22 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
         // Rute CRUD untuk kategori
-        Route::get('/kategori', [KategoriController::class, 'index'])->name('admin.kategori');
+        Route::get('/kategori', [KategoriController::class, 'index'])->name('admin.kategori.index');
         Route::post('/kategori', [KategoriController::class, 'store'])->name('admin.kategori.store');
         Route::get('/kategori/{id}/edit', [KategoriController::class, 'edit'])->name('admin.kategori.edit');
         Route::put('/kategori/{id}', [KategoriController::class, 'update'])->name('admin.kategori.update');
-        Route::delete('/kategori/{id}', [KategoriController::class, 'destroy'])->name('admin.kategori.destroy');
+        Route::delete('/kategori/{category}', [KategoriController::class, 'destroy'])->name('admin.kategori.destroy');  
+        Route::get('/admin/kategori', [KategoriController::class, 'create'])->name('admin.kategori.create');
 
 
         // Rute CRUD untuk produk
-        Route::get('/produk', [ProductController::class, 'index'])->name('admin.produk');
+        Route::get('/produk', [ProductController::class, 'index'])->name('admin.produk.index');
         Route::post('/produk', [ProductController::class, 'store'])->name('admin.produk.store');
-        Route::get('/produk/{id}/edit', [ProductController::class, 'edit'])->name('admin.produk.edit');
-        Route::put('/produk/{id}', [ProductController::class, 'update'])->name('admin.produk.update');
+        Route::get('/admin/produk/{product}/edit', [ProductController::class, 'edit'])->name('admin.produk.edit');
+
+        Route::put('/produk/{product}', [ProductController::class, 'update'])->name('admin.produk.update');
         Route::delete('/produk/{id}', [ProductController::class, 'destroy'])->name('admin.produk.destroy');
+        Route::get('/admin/produk', [ProductController::class, 'create'])->name('admin.produk.create');
     });
 });
 

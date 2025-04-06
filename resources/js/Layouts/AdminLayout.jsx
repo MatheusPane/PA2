@@ -25,6 +25,14 @@ export default function AdminLayout({ children }) {
                                 Produk
                             </Link>
                         </li>
+                        <li>
+                            <Link 
+                                href="/admin/kategori" 
+                                className="block p-2 rounded hover:bg-gray-700 transition"
+                            >
+                                Kategori
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
 
