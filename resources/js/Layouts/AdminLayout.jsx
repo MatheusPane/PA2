@@ -2,35 +2,35 @@ import { Link } from "@inertiajs/react";
 
 export default function AdminLayout({ children }) {
     return (
-        <div className="flex h-screen bg-gray-100">
+        <div className="flex h-screen bg-[#fdfaf6]">
             {/* Sidebar */}
-            <aside className="w-64 bg-gray-800 text-white p-4 flex flex-col">
-                <h2 className="text-xl font-bold mb-4">Admin Panel</h2>
-                
+            <aside className="w-64 bg-[#3e2f23] text-white p-6 flex flex-col shadow-lg">
+                <h2 className="text-2xl font-bold mb-6 tracking-wide">☕ Cafe Del</h2>
+
                 <nav className="flex-1">
-                    <ul className="space-y-2">
+                    <ul className="space-y-3">
                         <li>
                             <Link 
                                 href="/admin/dashboard" 
-                                className="block p-2 rounded hover:bg-gray-700 transition"
+                                className="block p-2 rounded-lg hover:bg-[#5a4233] transition font-medium"
                             >
-                                Dashboard
+                                📊 Dashboard
                             </Link>
                         </li>
                         <li>
                             <Link 
                                 href="/admin/produk" 
-                                className="block p-2 rounded hover:bg-gray-700 transition"
+                                className="block p-2 rounded-lg hover:bg-[#5a4233] transition font-medium"
                             >
-                                Produk
+                                🛒 Produk
                             </Link>
                         </li>
                         <li>
                             <Link 
                                 href="/admin/kategori" 
-                                className="block p-2 rounded hover:bg-gray-700 transition"
+                                className="block p-2 rounded-lg hover:bg-[#5a4233] transition font-medium"
                             >
-                                Kategori
+                                🗂️ Kategori
                             </Link>
                         </li>
                     </ul>
@@ -42,16 +42,16 @@ export default function AdminLayout({ children }) {
                         href="/logout" 
                         method="post" 
                         as="button" 
-                        className="w-full p-2 bg-red-600 hover:bg-red-700 rounded text-center transition"
+                        className="w-full p-2 bg-red-500 hover:bg-red-600 rounded-lg text-center transition font-semibold"
                     >
-                        Logout
+                        🔓 Logout
                     </Link>
                 </div>
             </aside>
 
             {/* Main Content */}
-            <main className="flex-1 p-6">
-                <div className="bg-white p-6 rounded shadow-md">
+            <main className="flex-1 p-8 overflow-auto bg-[#fdfaf6]">
+                <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
                     {children}
                 </div>
             </main>
