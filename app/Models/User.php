@@ -10,27 +10,37 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    /**
+     * Kolom yang bisa diisi secara massal.
+     */
     protected $fillable = [
         'name',
         'email',
         'password',
-        'is_admin', // Pastikan is_admin ada di fillable
+        'role', // gunakan kolom 'role' sesuai migrasi
     ];
 
+    /**
+     * Kolom yang disembunyikan saat serialisasi (misalnya ke JSON).
+     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
+    /**
+     * Konversi otomatis tipe data kolom tertentu.
+     */
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'is_admin' => 'boolean',
     ];
 
+    /**
+     * Cek apakah user adalah admin.
+     */
     public function isAdmin(): bool
-{
-    return $this->role === 'admin';
-}
-
+    {
+        return $this->role === 'admin';
+    }
 }

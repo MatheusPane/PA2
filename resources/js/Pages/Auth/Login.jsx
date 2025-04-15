@@ -32,7 +32,7 @@ export default function Login({ status, canResetPassword }) {
             <form onSubmit={submit} className="max-w-md mx-auto bg-white p-8 shadow-lg rounded-xl">
                 <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Welcome Back!</h2>
 
-                {/* Email */}   
+                {/* Email */}
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
                     <div className="relative mt-1">
@@ -107,6 +107,7 @@ export default function Login({ status, canResetPassword }) {
                         Sign up
                     </Link>
                 </p>
+
             </form>
         </GuestLayout>
     );
