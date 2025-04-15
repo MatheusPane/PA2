@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useForm } from "@inertiajs/react";
+import { useForm, Link } from "@inertiajs/react";
 import AdminLayout from "@/Layouts/AdminLayout";
 
 export default function AdminCategori({ categories = [] }) {
@@ -21,7 +21,7 @@ export default function AdminCategori({ categories = [] }) {
         <AdminLayout>
             <div className="p-6 bg-white shadow-md rounded-md">
                 <h2 className="text-2xl font-bold mb-4">Kelola Kategori</h2>
-                <form onSubmit={handleSubmit} className="mb-4 flex">
+                <form onSubmit={handleSubmit} className="mb-4 flex items-center">
                     <input 
                         type="text" 
                         value={data.name} 
@@ -29,9 +29,17 @@ export default function AdminCategori({ categories = [] }) {
                         className="border p-2 mr-2 flex-1" 
                         placeholder="Nama Kategori" 
                     />
-                    <button type="submit" className="bg-blue-500 text-white p-2">
-                        {editing ? "Update" : "Tambah"}
-                    </button>
+                    <div className="flex space-x-2">
+                        <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+                            {editing ? "Update" : "Tambah"}
+                        </button>
+                        <Link 
+                            href={route("admin.kategori.index")} 
+                            className="bg-gray-500 text-white p-2 rounded hover:bg-gray-600"
+                        >
+                            Batal
+                        </Link>
+                    </div>
                 </form>
             </div>
         </AdminLayout>

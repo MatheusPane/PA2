@@ -1,4 +1,4 @@
-import { useForm } from "@inertiajs/react";
+import { useForm, Link } from "@inertiajs/react";
 import AdminLayout from "@/Layouts/AdminLayout";
 
 export default function CreateProduct({ categories = [] }) {
@@ -23,10 +23,10 @@ export default function CreateProduct({ categories = [] }) {
             formData.append("image", data.image);
         }
 
-        post(route("admin.produk.store"), formData, {
+        post(route("admin.produk.store"), {
+            data: formData,
             onSuccess: () => reset(),
         });
-        
     };
 
     return (
@@ -94,13 +94,21 @@ export default function CreateProduct({ categories = [] }) {
                             required
                         />
                     </div>
-                    <button 
-                        type="submit" 
-                        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                        disabled={processing}
-                    >
-                        {processing ? "Menyimpan..." : "Tambah Produk"}
-                    </button>
+                    <div className="mt-4 flex space-x-2">
+                        <button 
+                            type="submit" 
+                            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                            disabled={processing}
+                        >
+                            {processing ? "Menyimpan..." : "Tambah Produk"}
+                        </button>
+                        <Link 
+                            href={route("admin.produk.index")} 
+                            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+                        >
+                            Batal
+                        </Link>
+                    </div>
                 </form>
             </div>
         </AdminLayout>

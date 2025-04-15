@@ -33,6 +33,14 @@ export default function AdminLayout({ children }) {
                                 🗂️ Kategori
                             </Link>
                         </li>
+                        <li>
+                            <Link 
+                                href="/admin/orders" 
+                                className="block p-2 rounded-lg hover:bg-[#5a4233] transition font-medium"
+                            >
+                                Pesanan
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
 
