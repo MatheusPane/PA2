@@ -14,7 +14,7 @@ use Inertia\Response;
 class AuthenticatedSessionController extends Controller
 {
     /**
-     * Display the login view.
+     * Tampilkan halaman login.
      */
     public function create(): Response
     {
@@ -25,30 +25,30 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * Handle an incoming authentication request.
+     * Proses login user.
      */
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
         $request->session()->regenerate();
-    
-        // Cek apakah user adalah admin atau user biasa
+
         if (Auth::user()->is_admin) {
+            // Redirect ke dashboard admin
             return redirect()->intended(route('admin.dashboard', absolute: false));
         }
-    
-        return redirect()->intended(route('dashboard', absolute: false));
+
+        // Redirect ke halaman user biasa
+        return redirect()->intended('/');
     }
 
     /**
-     * Destroy an authenticated session.
+     * Logout user.
      */
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect('/');
