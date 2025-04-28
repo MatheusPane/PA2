@@ -21,36 +21,36 @@ export default function Login({ status, canResetPassword }) {
 
     return (
         <GuestLayout>
-            <Head title="Log in" />
+            <Head title="Login" />
 
-            <div className="min-h-screen bg-[#FFF9F0] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-md w-full space-y-8 bg-white rounded-xl shadow-lg p-10 border border-[#E0D4B9]">
-                    <div>
-                        <h2 className="text-center text-3xl font-bold text-[#4B2E2E]">
+            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#FFF9F0] to-[#F7E7CE] px-6 py-12">
+                <div className="w-full max-w-md space-y-8 p-10 rounded-2xl bg-white shadow-2xl border border-[#E0D4B9]">
+                    <div className="text-center">
+                        <h2 className="text-4xl font-extrabold text-[#4B2E2E]">
                             Welcome <span className="text-[#A0522D]">Admin</span> ☕
                         </h2>
-                        <p className="mt-2 text-center text-sm text-[#6B4F4F]">
-                            Log in to continue your journey
+                        <p className="mt-2 text-sm text-[#6B4F4F]">
+                            Log in to manage your coffee shop
                         </p>
                         {status && (
-                            <div className="mt-4 text-sm font-medium text-green-600 text-center">
+                            <div className="mt-4 text-green-600 font-semibold text-sm">
                                 {status}
                             </div>
                         )}
                     </div>
 
-                    <form onSubmit={submit} className="mt-8 space-y-6">
-                        {/* Email */}
+                    <form onSubmit={submit} className="space-y-6">
+                        {/* Email Input */}
                         <div>
                             <InputLabel htmlFor="email" value="Email" />
                             <div className="relative mt-1">
-                                <FiMail className="absolute left-4 top-3 text-[#A0522D]" />
+                                <FiMail className="absolute left-3 top-3 text-[#A0522D]" />
                                 <TextInput
                                     id="email"
                                     type="email"
                                     name="email"
                                     value={data.email}
-                                    className="pl-12 w-full border-[#D2B48C] focus:ring-[#A0522D] focus:border-[#A0522D] rounded-md py-2 px-4 text-[#4B2E2E]"
+                                    className="pl-10 w-full border rounded-lg py-2 px-4 border-[#D2B48C] focus:border-[#A0522D] focus:ring-2 focus:ring-[#A0522D]/30 text-[#4B2E2E] transition-all"
                                     autoComplete="username"
                                     isFocused={true}
                                     onChange={(e) => setData('email', e.target.value)}
@@ -59,17 +59,17 @@ export default function Login({ status, canResetPassword }) {
                             <InputError message={errors.email} className="mt-2" />
                         </div>
 
-                        {/* Password */}
+                        {/* Password Input */}
                         <div>
                             <InputLabel htmlFor="password" value="Password" />
                             <div className="relative mt-1">
-                                <FiLock className="absolute left-4 top-3 text-[#A0522D]" />
+                                <FiLock className="absolute left-3 top-3 text-[#A0522D]" />
                                 <TextInput
                                     id="password"
                                     type="password"
                                     name="password"
                                     value={data.password}
-                                    className="pl-12 w-full border-[#D2B48C] focus:ring-[#A0522D] focus:border-[#A0522D] rounded-md py-2 px-4 text-[#4B2E2E]"
+                                    className="pl-10 w-full border rounded-lg py-2 px-4 border-[#D2B48C] focus:border-[#A0522D] focus:ring-2 focus:ring-[#A0522D]/30 text-[#4B2E2E] transition-all"
                                     autoComplete="current-password"
                                     onChange={(e) => setData('password', e.target.value)}
                                 />
@@ -77,9 +77,9 @@ export default function Login({ status, canResetPassword }) {
                             <InputError message={errors.password} className="mt-2" />
                         </div>
 
-                        {/* Remember & Forgot */}
-                        <div className="flex items-center justify-between">
-                            <label className="flex items-center text-sm text-[#6B4F4F]">
+                        {/* Remember Me and Forgot Password */}
+                        <div className="flex items-center justify-between text-sm text-[#6B4F4F]">
+                            <label className="flex items-center">
                                 <Checkbox
                                     name="remember"
                                     checked={data.remember}
@@ -91,30 +91,33 @@ export default function Login({ status, canResetPassword }) {
                             {canResetPassword && (
                                 <Link
                                     href={route('password.request')}
-                                    className="text-sm text-[#A0522D] hover:underline"
+                                    className="text-[#A0522D] hover:underline transition"
                                 >
-                                    Forgot password?
+                                    Forgot?
                                 </Link>
                             )}
                         </div>
 
-                        {/* Tombol Login */}
+                        {/* Submit Button */}
                         <div>
                             <PrimaryButton
-                                className="w-full bg-[#A0522D] hover:bg-[#8B4513] text-white py-2 rounded-md font-semibold transition duration-300"
+                                className="w-full bg-[#A0522D] hover:bg-[#8B4513] text-white py-2 rounded-lg font-bold transition-all duration-300"
                                 disabled={processing}
                             >
                                 Log in
                             </PrimaryButton>
                         </div>
 
-                        {/* Link ke Register */}
-                        <p className="text-center text-sm text-[#6B4F4F] mt-4">
+                        {/* Register Link */}
+                        <div className="text-center text-sm text-[#6B4F4F]">
                             Don't have an account?{' '}
-                            <Link href={route('register')} className="text-[#A0522D] font-semibold hover:underline">
+                            <Link
+                                href={route('register')}
+                                className="text-[#A0522D] font-semibold hover:underline transition"
+                            >
                                 Sign up
                             </Link>
-                        </p>
+                        </div>
                     </form>
                 </div>
             </div>
