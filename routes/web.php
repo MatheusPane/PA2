@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderController; // Ditambahkan
+use App\Http\Controllers\Admin\ManualOrderController; // Ditambahkan
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -32,7 +33,17 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/admin/produk', [ProductController::class, 'create'])->name('admin.produk.create');
 
         // Rute untuk pesanan (Ditambahkan)
-        Route::get('/orders', [OrderController::class, 'index'])->name('admin.orders.index');
+        // daftar semua order (manual + online)
+        Route::get('/orders', [OrderController::class, 'index'])
+        ->name('admin.orders.index');
+        Route::delete('/admin/orders/{order}', [OrderController::class, 'destroy'])->name('admin.orders.destroy');
+
+        // Manual Order (by admin)
+         // manual order: bikin order baru
+    Route::get('/manual-order/create', [ManualOrderController::class, 'create'])
+    ->name('admin.order.create');
+    Route::post('/manual-order', [ManualOrderController::class, 'store'])
+    ->name('admin.order.store');
     });
 });
 

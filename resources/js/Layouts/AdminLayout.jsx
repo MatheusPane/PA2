@@ -41,6 +41,16 @@ export default function AdminLayout({ children }) {
                                 Pesanan
                             </Link>
                         </li>
+                        <li>
+                        <Link
+                            href={route('admin.order.create')}
+                            className="block p-2 rounded-lg hover:bg-[#5a4233] transition font-medium"
+                            >
+                            Manual Order
+                        </Link>
+
+
+                        </li>
                     </ul>
                 </nav>
 
