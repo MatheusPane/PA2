@@ -76,7 +76,7 @@ export default function AdminManualOrderCreate({ products = [] }) {
                             onClick={addItem}
                             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                         >
-                            + Tambah Produk
+                            + Order
                         </button>
                     </div>
 
@@ -87,12 +87,6 @@ export default function AdminManualOrderCreate({ products = [] }) {
                         >
                             Simpan Order
                         </button>
-                        <Link
-                            href={route('admin.produk.index')}
-                            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
-                        >
-                            Batal
-                        </Link>
                     </div>
                 </form>
             </div>

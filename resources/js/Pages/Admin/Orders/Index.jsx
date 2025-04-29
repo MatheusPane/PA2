@@ -30,7 +30,7 @@ export default function Index({ orders = [] }) {
                             orders.map((order) => (
                                 <tr key={order.id} className="border-t">
                                     <td className="p-2">{order.order_number}</td>
-                                    <td className="p-2">{order.user?.name || "Tidak diketahui"}</td>
+                                    <td className="p-2">{order.user?.name || "Manual Order"}</td>
                                     <td className="p-2">Rp {Number(order.total_amount).toLocaleString('id-ID')}</td>
                                     <td className="p-2">{order.status}</td>
                                     <td className="p-2">
